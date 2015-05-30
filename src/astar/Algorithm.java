@@ -7,13 +7,14 @@ import java.util.PriorityQueue;
 import java.util.Stack;
 
 import resources.*;
+import resources.examples.*;
 
-public class Algorithm <S extends State, T extends Transition<S,E>, E extends Environment<S,E>, H extends Heuristic<S>> {
+public class Algorithm <S extends State, T extends Transition<S,E>, E extends Environment<S,E>> {
 	
-	H heuristic;
+	Heuristic<S> h;
 	
-	public Algorithm(H heuristic) {
-		this.heuristic = heuristic;
+	public Algorithm(Heuristic<S> heuristic) {
+		h = heuristic;
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -62,7 +63,7 @@ public class Algorithm <S extends State, T extends Transition<S,E>, E extends En
 	// h is the heuristic estimate of cost to the goal (can't over estimate)
 	// g is the cost already acrued on the path
 	private double f(S current, S goal) {
-		return heuristic.h(current, goal) + current.g();
+		return h.h(current, goal) + current.g();
 	}
 	
 	private List<Pair<S,E>> nextStates(S current, T[] transitions, E env, List<Pair<S,E>> explored) {
@@ -105,33 +106,18 @@ public class Algorithm <S extends State, T extends Transition<S,E>, E extends En
 			}
 		}
 	}
-	/*
-	public static class MyComparator implements Comparator<Integer> {
-		@Override
-		public int compare(Integer one, Integer two) {
-			if (one - two == 0.0 ) {
-				return 0;
-			}
-			else if (one - two < 0.0 ) {
-				return -1;
-			}
-			else {
-				return 1;
-			}
-		}
-	}
-	*/
 	
 	public static void main(String[] args) {
-		/*
-		PriorityQueue<Integer> pqi = new PriorityQueue<Integer>(new MyComparator());
-		pqi.add(1);
-		pqi.add(3);
-		pqi.add(2);
-		System.out.println("1: "+pqi.poll());
-		System.out.println("2: "+pqi.poll());
-		System.out.println("3: "+pqi.poll());
-		*/
+		// Example Scenario
+		
+		Algorithm<Location2D,Transition2D,Map2D> a = new Algorithm<Location2D,Transition2D,Map2D>(new TaxiDistance());
+		Location2D initial = new Location2D(1.0,10.0);
+		Location2D goal = new Location2D(1.0,1.0);
+		Transition2D[] moves = new Transition2D[2];
+		moves[0] = new North1();
+		moves[1] = new South1();
+		Map2D env = new Map2D(11.0,11.0);
+		a.search(initial, goal, moves, env);
 	}
 	
 }
