@@ -6,24 +6,25 @@ import java.util.Stack;
 
 import resources.*;
 
-public class Algorithm <S extends State, T extends Transition, E extends Environment> {//, H extends Heuristic> {
+public class Algorithm <S extends State, T extends Transition, E extends Environment, H extends Heuristic> {
 	
-	//H heuristic;
+	H heuristic;
 	
-	//public Algorithm(H heuristic) {
-	//	this.heuristic = heuristic;
-	//}
+	public Algorithm(H heuristic) {
+		this.heuristic = heuristic;
+	}
 	
 	public Stack<Pair<S,T>> search(S initial, S goal, T[] moves, E env) {
-		PriorityQueue<S> frontier = new PriorityQueue<S>();
+		PriorityQueue<S> frontier = new PriorityQueue<S>(new AstarComparator(goal));
 		
 		return null;
 	}
 	
-	//
+	// f is the informed estimation of the distance to the goal
+	// h is the heuristic estimate of cost to the goal (can't over estimate)
+	// g is the cost already acrued on the path
 	private double f(S current, S goal) {
-		// TODO fix
-		return 0.0;
+		return heuristic.h(current, goal) + current.g();
 	}
 	
 	private class AstarComparator implements Comparator<S> {
