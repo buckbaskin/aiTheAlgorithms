@@ -16,9 +16,8 @@ public class Location2D extends State {
 	}
 	
 	// GETTER
-	@Override
-	public State state() {
-		return new Location2D(x,y);
+	public Location2D get() {
+		return new Location2D(x(),y());
 	}
 	
 	// SETTER
