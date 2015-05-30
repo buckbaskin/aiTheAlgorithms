@@ -1,6 +1,6 @@
 package resources;
 
-public abstract class Transition<S extends State, E extends Environment> extends AbstractResource {
+public abstract class Transition<S extends State, E extends Environment<S,E>> extends AbstractResource {
 
 	// A Transition can be thought of as a possible move
 	

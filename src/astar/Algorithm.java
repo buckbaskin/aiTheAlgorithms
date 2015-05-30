@@ -8,7 +8,7 @@ import java.util.Stack;
 
 import resources.*;
 
-public class Algorithm <S extends State, T extends Transition<S,E>, E extends Environment<S,E>, H extends Heuristic> {
+public class Algorithm <S extends State, T extends Transition<S,E>, E extends Environment<S,E>, H extends Heuristic<S>> {
 	
 	H heuristic;
 	

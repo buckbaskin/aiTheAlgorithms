@@ -10,6 +10,6 @@ public abstract class Environment<S extends State, E extends Environment<S,E>> e
 	// updates the Environment based on the state/transition pair.
 	// 	This can be where other agents are given a chance to act, the world changes, etc.
 	
-	public abstract Environment update(S s, E initial);
+	public abstract Environment<S,E> update(S s, E initial);
 	
 }
