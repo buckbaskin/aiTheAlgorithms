@@ -1,7 +1,8 @@
-package resources.examples;
+package resources.examples.environments;
 
 import resources.AbstractResource;
 import resources.Environment;
+import resources.examples.states.Location2D;
 
 public class Map2D extends Environment<Location2D,Map2D> {
 	

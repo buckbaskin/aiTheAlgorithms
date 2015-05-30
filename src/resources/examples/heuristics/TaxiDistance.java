@@ -1,7 +1,8 @@
-package resources.examples;
+package resources.examples.heuristics;
 
 import resources.AbstractResource;
 import resources.Heuristic;
+import resources.examples.states.Location2D;
 
 public class TaxiDistance extends Heuristic<Location2D>{
 

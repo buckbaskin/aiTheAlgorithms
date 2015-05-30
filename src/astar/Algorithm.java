@@ -8,6 +8,14 @@ import java.util.Stack;
 
 import resources.*;
 import resources.examples.*;
+import resources.examples.environments.Map2D;
+import resources.examples.heuristics.TaxiDistance;
+import resources.examples.states.Location2D;
+import resources.examples.transitions.East1;
+import resources.examples.transitions.North1;
+import resources.examples.transitions.South1;
+import resources.examples.transitions.Transition2D;
+import resources.examples.transitions.West1;
 
 public class Algorithm <S extends State, T extends Transition<S,E>, E extends Environment<S,E>> {
 	
@@ -49,6 +57,7 @@ public class Algorithm <S extends State, T extends Transition<S,E>, E extends En
             	toReturn.push(n);
             	n = (S) n.parent();
             }
+            toReturn.push(n);
             
             return toReturn;
     	}
@@ -111,13 +120,20 @@ public class Algorithm <S extends State, T extends Transition<S,E>, E extends En
 		// Example Scenario
 		
 		Algorithm<Location2D,Transition2D,Map2D> a = new Algorithm<Location2D,Transition2D,Map2D>(new TaxiDistance());
-		Location2D initial = new Location2D(1.0,10.0);
+		Location2D initial = new Location2D(10.0,10.0);
 		Location2D goal = new Location2D(1.0,1.0);
-		Transition2D[] moves = new Transition2D[2];
+		Transition2D[] moves = new Transition2D[4];
 		moves[0] = new North1();
 		moves[1] = new South1();
+		moves[2] = new East1();
+		moves[3] = new West1();
 		Map2D env = new Map2D(11.0,11.0);
-		a.search(initial, goal, moves, env);
+		Stack<Location2D> result = a.search(initial, goal, moves, env);
+		System.out.println("Print example stack: ");
+		for(int i = result.size()-1; i >= 0; i--) {
+			System.out.println((i+":   ").substring(0, 4)+result.get(i).toString());
+		}
+		System.out.println("End Print example stack");
 	}
 	
 }

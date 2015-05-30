@@ -1,4 +1,4 @@
-package resources.examples;
+package resources.examples.states;
 
 import resources.AbstractResource;
 import resources.State;
@@ -40,13 +40,13 @@ public class Location2D extends State {
 		}
 	}
 	
-	double x() {
+	public double x() {
 		return x;
 	}
 	private double x(double new_x) {
 		return x = new_x;
 	}
-	double y() {
+	public double y() {
 		return y;
 	}
 	private double y(double new_y) {
@@ -56,6 +56,11 @@ public class Location2D extends State {
 	@Override
 	public AbstractResource deepCopy() {
 		return new Location2D(x(),y());
+	}
+	
+	@Override
+	public String toString() {
+		return "{"+x()+","+y()+"}";
 	}
 
 }

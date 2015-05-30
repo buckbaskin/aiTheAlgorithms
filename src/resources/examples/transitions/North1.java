@@ -1,8 +1,10 @@
-package resources.examples;
+package resources.examples.transitions;
 
 import resources.AbstractResource;
 import resources.Pair;
 import resources.Transition;
+import resources.examples.environments.Map2D;
+import resources.examples.states.Location2D;
 
 public class North1 extends Transition2D {
 
