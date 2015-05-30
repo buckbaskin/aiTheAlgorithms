@@ -114,7 +114,7 @@ public class Algorithm <S extends State, T extends Transition<S,E>, E extends En
 	public static void main(String[] args) {
 		// Example Scenario
 		
-		Algorithm<Location2D,Transition2D,Map2D> a = new Algorithm<Location2D,Transition2D,Map2D>(new TaxiDistance());
+		Algorithm<Location2D,Transition2D,Map2D> a = new Algorithm<Location2D,Transition2D,Map2D>(new CartesianDistance());
 		Location2D initial = new Location2D(10.0,10.0);
 		Location2D goal = new Location2D(1.0,1.0);
 		Transition2D[] moves = new Transition2D[4];
