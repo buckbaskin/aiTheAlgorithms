@@ -14,12 +14,20 @@ public abstract class State extends AbstractResource {
 	public abstract double distance(State other);
 	
 	public double g() {
-		if(parent == null) { // initial node
+		if(parent() == null) { // initial node
 			return 0.0;
 		}
 		else { // return the distance to the parent + the distance from the parent to the start
-			return distance(parent)+parent.g();
+			return distance(parent)+parent().g();
 		}
+	}
+	
+	public State parent() {
+		return parent;
+	}
+	
+	public void parent(State p) {
+		this.parent = p;
 	}
 	
 }

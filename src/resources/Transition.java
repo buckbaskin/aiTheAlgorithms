@@ -6,7 +6,13 @@ public abstract class Transition<S extends State, E extends Environment> extends
 	
 	// A transition must, when given an initial state+environment, return the next state+environment after the action
 	
-	public abstract Pair<S,E> act(S inital, E world);
+	public Pair<S,E> actOn(S initial, E world) {
+		Pair<S,E> toReturn = act(initial,world);
+		toReturn.a.parent(initial);
+		return toReturn;
+	}
+	
+	protected abstract Pair<S,E> act(S inital, E world);
 	
 	// A transition must know if it is useful, i.e. valid
 	// 	returns true if it changes the state in a useful way to the user.
