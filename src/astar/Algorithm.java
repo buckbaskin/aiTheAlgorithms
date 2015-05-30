@@ -7,15 +7,10 @@ import java.util.PriorityQueue;
 import java.util.Stack;
 
 import resources.*;
-import resources.examples.*;
-import resources.examples.environments.Map2D;
-import resources.examples.heuristics.TaxiDistance;
-import resources.examples.states.Location2D;
-import resources.examples.transitions.East1;
-import resources.examples.transitions.North1;
-import resources.examples.transitions.South1;
-import resources.examples.transitions.Transition2D;
-import resources.examples.transitions.West1;
+import resources.examples.environments.*;
+import resources.examples.heuristics.*;
+import resources.examples.states.*;
+import resources.examples.transitions.*;
 
 public class Algorithm <S extends State, T extends Transition<S,E>, E extends Environment<S,E>> {
 	
